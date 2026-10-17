@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
 
+import { BackToTop } from './BackToTop'
 import { SiteCompanion } from './SiteCompanion'
 
 // Navigation, footer and the site companion, shared by every page.
@@ -80,6 +81,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <Suspense fallback={null}>
         <SiteCompanion />
       </Suspense>
+      <BackToTop />
     </>
   )
 }

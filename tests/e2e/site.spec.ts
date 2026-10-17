@@ -58,3 +58,14 @@ test('the workshop lists ten chapters and each one reads', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Set up the kit')
   await expectNoSidewaysScroll(page)
 })
+
+test('back to top appears after scrolling and returns to the top', async ({ page }) => {
+  await page.goto('/workshop')
+  const button = page.getByRole('button', { name: 'Back to top' })
+  await expect(button).toBeHidden()
+
+  await page.evaluate(() => window.scrollTo(0, 3000))
+  await expect(button).toBeVisible()
+  await button.click()
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0)
+})
