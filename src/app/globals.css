@@ -245,3 +245,10 @@ body::before {
     transition: none;
   }
 }
+
+/* Phones: a little smaller code, so more of each line fits. */
+@media (max-width: 480px) {
+  .prose-workshop pre {
+    font-size: 12.5px;
+  }
+}
